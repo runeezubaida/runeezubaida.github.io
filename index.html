@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Runee Zubaida Zahid — Portfolio</title>
+<meta name="description" content="Runee Zubaida Zahid — Computer Science at Korea University. AI evaluation, data quality, and backend systems. Trilingual in English, Korean, and Bengali.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4f1ec;
+    --surface: #fbfaf7;
+    --ink: #2a2927;
+    --ink-soft: #4a4843;
+    --muted: #7a756c;
+    --line: #e3ded4;
+    --sage: #7d8f80;
+    --sage-soft: #e6ebe4;
+    --clay: #a8826c;
+    --clay-soft: #f1e7df;
+    --slate: #6f7c8a;
+    --shadow: 0 1px 2px rgba(42,41,39,.04), 0 8px 24px rgba(42,41,39,.06);
+    --radius: 14px;
+    --serif: "Fraunces", Georgia, serif;
+    --sans: "Inter", "Noto Sans KR", system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1c1d1b; --surface: #242522; --ink: #ebe8e1; --ink-soft: #cfcbc2;
+      --muted: #9a958b; --line: #34352f; --sage: #9fb2a2; --sage-soft: #2b322c;
+      --clay: #c9a28b; --clay-soft: #362c26; --slate: #9aa7b4;
+      --shadow: 0 1px 2px rgba(0,0,0,.2), 0 8px 24px rgba(0,0,0,.25);
+    }
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg); color: var(--ink); font-family: var(--sans);
+    font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased;
+  }
+  html[data-lang="ko"] body { word-break: keep-all; line-height: 1.8; }
+  a { color: inherit; text-decoration: none; }
+  ::selection { background: var(--sage-soft); }
+
+  /* language switching */
+  html[data-lang="en"] .ko, html[data-lang="ko"] .en { display: none !important; }
+
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; }
+
+  /* progress bar */
+  .progress { position: fixed; top: 0; left: 0; height: 2px; width: 0; background: var(--sage); z-index: 60; transition: width .1s linear; }
+
+  /* nav */
+  nav {
+    position: fixed; inset: 0 0 auto 0; z-index: 50;
+    transition: background .35s ease, box-shadow .35s ease, padding .35s ease;
+    padding: 22px 0;
+  }
+  nav.scrolled { background: color-mix(in srgb, var(--bg) 86%, transparent); backdrop-filter: blur(10px); box-shadow: 0 1px 0 var(--line); padding: 12px 0; }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .logo { font-family: var(--serif); font-size: 20px; font-weight: 500; letter-spacing: -.01em; }
+  .logo span { color: var(--sage); }
+  .nav-links { display: flex; gap: 28px; font-size: 14px; color: var(--ink-soft); }
+  .nav-links a { position: relative; transition: color .2s; }
+  .nav-links a::after { content: ""; position: absolute; left: 0; bottom: -3px; width: 0; height: 1px; background: var(--sage); transition: width .3s ease; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+  .lang-toggle {
+    display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 3px;
+    background: var(--surface); font-size: 13px; font-weight: 500;
+  }
+  .lang-toggle button {
+    border: 0; background: transparent; color: var(--muted); padding: 5px 12px; border-radius: 999px;
+    cursor: pointer; font: inherit; transition: background .25s, color .25s;
+  }
+  .lang-toggle button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+
+  /* hero */
+  .hero { min-height: 100vh; display: flex; align-items: center; padding: 120px 0 80px; position: relative; overflow: hidden; }
+  .hero::before, .hero::after {
+    content: ""; position: absolute; border-radius: 50%; filter: blur(70px); opacity: .55; z-index: -1;
+    animation: drift 18s ease-in-out infinite alternate;
+  }
+  .hero::before { width: 420px; height: 420px; background: var(--sage-soft); top: 8%; right: -80px; }
+  .hero::after { width: 340px; height: 340px; background: var(--clay-soft); bottom: 4%; left: -120px; animation-delay: -6s; }
+  @keyframes drift { to { transform: translate(-40px, 30px) scale(1.08); } }
+
+  .eyebrow { font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--sage); font-weight: 600; margin-bottom: 20px; }
+  html[data-lang="ko"] .eyebrow { letter-spacing: .06em; }
+  h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(42px, 7vw, 78px); line-height: 1.05; letter-spacing: -.025em; }
+  h1 em { font-style: italic; color: var(--clay); }
+  .hero-sub { margin-top: 28px; max-width: 620px; font-size: 18px; color: var(--ink-soft); }
+  .hero-meta { margin-top: 34px; display: flex; flex-wrap: wrap; gap: 10px; }
+  .chip { font-size: 13px; padding: 6px 14px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); color: var(--ink-soft); }
+  .hero-cta { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; padding: 12px 22px; border-radius: 999px;
+    font-size: 15px; font-weight: 500; transition: transform .25s ease, background .25s, box-shadow .25s;
+  }
+  .btn-primary { background: var(--ink); color: var(--bg); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+  .btn-ghost { border: 1px solid var(--line); background: var(--surface); }
+  .btn-ghost:hover { transform: translateY(-2px); border-color: var(--sage); }
+  .scroll-hint { position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%); font-size: 12px; color: var(--muted); letter-spacing: .1em; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .scroll-hint i { width: 1px; height: 38px; background: linear-gradient(var(--muted), transparent); animation: hint 2.2s ease-in-out infinite; transform-origin: top; }
+  @keyframes hint { 0% { transform: scaleY(0); } 50% { transform: scaleY(1); } 100% { transform: scaleY(1); opacity: 0; } }
+
+  /* hero load-in */
+  .load { opacity: 0; transform: translateY(18px); animation: rise .9s cubic-bezier(.2,.7,.2,1) forwards; animation-delay: var(--d, 0s); }
+  @keyframes rise { to { opacity: 1; transform: none; } }
+
+  /* sections */
+  section { padding: 110px 0; }
+  .section-head { display: grid; grid-template-columns: 180px 1fr; gap: 32px; margin-bottom: 56px; align-items: baseline; }
+  .section-num { font-family: var(--serif); font-size: 15px; color: var(--muted); font-style: italic; }
+  h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(32px, 4.4vw, 46px); letter-spacing: -.02em; line-height: 1.15; }
+  .body-grid { display: grid; grid-template-columns: 180px 1fr; gap: 32px; }
+
+  /* about */
+  .about-text p { font-size: 18px; color: var(--ink-soft); max-width: 680px; }
+  .about-text p + p { margin-top: 20px; }
+  .about-text strong { color: var(--ink); font-weight: 500; }
+  .pull {
+    margin-top: 40px; padding: 26px 30px; border-left: 2px solid var(--clay);
+    font-family: var(--serif); font-size: 22px; font-style: italic; color: var(--ink); background: var(--surface); border-radius: 0 var(--radius) var(--radius) 0;
+    max-width: 680px;
+  }
+  html[data-lang="ko"] .pull { font-style: normal; font-family: var(--sans); font-size: 19px; font-weight: 500; }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; max-width: 680px; }
+  .stat { padding: 20px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+  .stat b { display: block; font-family: var(--serif); font-size: 30px; font-weight: 500; color: var(--sage); line-height: 1.2; }
+  .stat span { font-size: 13px; color: var(--muted); }
+
+  /* projects */
+  .projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+  .card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 30px;
+    display: flex; flex-direction: column; transition: transform .4s cubic-bezier(.2,.7,.2,1), box-shadow .4s, border-color .4s;
+  }
+  .card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: color-mix(in srgb, var(--sage) 45%, var(--line)); }
+  .card.featured { grid-column: span 2; }
+  .card-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 18px; }
+  .tag { font-size: 12px; font-weight: 500; padding: 4px 10px; border-radius: 999px; background: var(--sage-soft); color: var(--sage); }
+  .tag.clay { background: var(--clay-soft); color: var(--clay); }
+  .date { font-size: 13px; color: var(--muted); }
+  .card h3 { font-family: var(--serif); font-weight: 500; font-size: 25px; letter-spacing: -.01em; line-height: 1.25; }
+  .role { font-size: 14px; color: var(--clay); margin-top: 6px; font-weight: 500; }
+  .card p { margin-top: 14px; color: var(--ink-soft); font-size: 15px; }
+  .card ul { margin-top: 14px; list-style: none; display: grid; gap: 8px; }
+  .card li { font-size: 15px; color: var(--ink-soft); padding-left: 18px; position: relative; }
+  .card li::before { content: ""; position: absolute; left: 0; top: .78em; width: 7px; height: 1px; background: var(--sage); }
+  .featured-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 36px; }
+  .pipeline { display: flex; flex-direction: column; gap: 10px; justify-content: center; }
+  .stage {
+    display: flex; align-items: center; gap: 14px; padding: 14px 16px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg);
+    font-size: 14px; opacity: 0; transform: translateX(16px); transition: opacity .6s ease, transform .6s cubic-bezier(.2,.7,.2,1);
+  }
+  .in .stage { opacity: 1; transform: none; }
+  .in .stage:nth-child(2) { transition-delay: .15s; } .in .stage:nth-child(3) { transition-delay: .3s; } .in .stage:nth-child(4) { transition-delay: .45s; }
+  .stage b { font-family: var(--serif); font-weight: 500; color: var(--sage); min-width: 22px; }
+  .stage.mine { border-color: var(--clay); background: var(--clay-soft); }
+  .stage small { margin-left: auto; font-size: 11px; color: var(--clay); font-weight: 600; letter-spacing: .04em; }
+  .stack { margin-top: auto; padding-top: 22px; display: flex; flex-wrap: wrap; gap: 6px; }
+  .stack span { font-size: 12px; padding: 3px 9px; border-radius: 6px; border: 1px solid var(--line); color: var(--muted); }
+  .card-link { margin-top: 18px; font-size: 14px; font-weight: 500; color: var(--sage); display: inline-flex; gap: 6px; align-items: center; }
+  .card-link:hover { gap: 10px; } .card-link { transition: gap .25s; }
+
+  /* experience timeline */
+  .timeline { position: relative; }
+  .timeline::before { content: ""; position: absolute; left: 0; top: 8px; bottom: 8px; width: 1px; background: var(--line); }
+  .tl-line { position: absolute; left: 0; top: 8px; width: 1px; height: 0; background: var(--sage); transition: height .2s linear; }
+  .job { position: relative; padding-left: 36px; padding-bottom: 48px; }
+  .job:last-child { padding-bottom: 0; }
+  .job::before {
+    content: ""; position: absolute; left: -5px; top: 9px; width: 11px; height: 11px; border-radius: 50%;
+    background: var(--bg); border: 2px solid var(--sage); transition: background .4s, transform .4s;
+  }
+  .job.in::before { background: var(--sage); transform: scale(1.05); }
+  .job-head { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px 16px; align-items: baseline; }
+  .job h3 { font-size: 19px; font-weight: 600; letter-spacing: -.005em; }
+  .job .org { color: var(--ink-soft); font-size: 15px; margin-top: 2px; }
+  .job ul { margin-top: 12px; list-style: none; display: grid; gap: 7px; max-width: 680px; }
+  .job li { color: var(--ink-soft); font-size: 15px; padding-left: 18px; position: relative; }
+  .job li::before { content: ""; position: absolute; left: 0; top: .78em; width: 7px; height: 1px; background: var(--clay); }
+
+  /* skills + education */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; }
+  .panel h4 { font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin-bottom: 18px; }
+  html[data-lang="ko"] .panel h4 { letter-spacing: .04em; }
+  .skill-group + .skill-group { margin-top: 18px; }
+  .skill-group p { font-size: 13px; color: var(--clay); font-weight: 500; margin-bottom: 8px; }
+  .pills { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pills span { font-size: 13px; padding: 5px 11px; border-radius: 999px; background: var(--bg); border: 1px solid var(--line); color: var(--ink-soft); transition: border-color .2s, color .2s; }
+  .pills span:hover { border-color: var(--sage); color: var(--ink); }
+  .lang-row { display: grid; grid-template-columns: 90px 1fr auto; align-items: center; gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
+  .lang-row:last-child { border-bottom: 0; }
+  .bar { height: 4px; background: var(--line); border-radius: 4px; overflow: hidden; }
+  .bar i { display: block; height: 100%; width: 0; background: var(--sage); border-radius: 4px; transition: width 1.2s cubic-bezier(.2,.7,.2,1); }
+  .in .bar i { width: var(--w); }
+  .lang-row small { font-size: 12px; color: var(--muted); white-space: nowrap; }
+  .edu-item + .edu-item { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--line); }
+  .edu-item b { display: block; font-weight: 600; font-size: 16px; }
+  .edu-item span { display: block; font-size: 14px; color: var(--ink-soft); }
+  .edu-item small { font-size: 13px; color: var(--muted); }
+
+  /* contact */
+  .contact { text-align: center; padding: 130px 0 90px; }
+  .contact h2 { font-size: clamp(36px, 5.5vw, 58px); }
+  .contact p { color: var(--ink-soft); margin: 18px auto 36px; max-width: 520px; font-size: 17px; }
+  .email-big {
+    font-family: var(--serif); font-size: clamp(20px, 3vw, 28px); border-bottom: 1px solid var(--line); padding-bottom: 4px;
+    transition: border-color .3s, color .3s;
+  }
+  .email-big:hover { border-color: var(--clay); color: var(--clay); }
+  .socials { margin-top: 36px; display: flex; justify-content: center; gap: 12px; }
+  footer { border-top: 1px solid var(--line); padding: 28px 0; font-size: 13px; color: var(--muted); }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+
+  /* scroll reveal */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); transition-delay: var(--d, 0s); }
+  .reveal.left { transform: translateX(-28px); }
+  .reveal.scale { transform: scale(.97) translateY(16px); }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* language swap fade */
+  main, nav .nav-links { transition: opacity .25s ease; }
+  body.swapping main, body.swapping .nav-links { opacity: 0; }
+
+  @media (max-width: 820px) {
+    .nav-links { display: none; }
+    .section-head, .body-grid { grid-template-columns: 1fr; gap: 10px; }
+    .section-head { margin-bottom: 36px; }
+    .projects, .two-col, .featured-grid { grid-template-columns: 1fr; }
+    .card.featured { grid-column: auto; }
+    section { padding: 80px 0; }
+    .stats { grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+    .stat { padding: 14px; } .stat b { font-size: 24px; }
+    .card { padding: 24px; }
+  }
+  @media (max-width: 480px) {
+    .wrap { padding: 0 16px; }
+    .stats { grid-template-columns: 1fr; }
+    .lang-row { grid-template-columns: 76px 1fr; }
+    .lang-row small { grid-column: 2; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .reveal, .load, .stage { opacity: 1 !important; transform: none !important; }
+    .bar i { width: var(--w) !important; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<nav id="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="logo">Runee<span>.</span></a>
+    <div class="nav-links">
+      <a href="#about"><span class="en">About</span><span class="ko">소개</span></a>
+      <a href="#projects"><span class="en">Projects</span><span class="ko">프로젝트</span></a>
+      <a href="#experience"><span class="en">Experience</span><span class="ko">경력</span></a>
+      <a href="#skills"><span class="en">Skills</span><span class="ko">역량</span></a>
+      <a href="#contact"><span class="en">Contact</span><span class="ko">연락처</span></a>
+    </div>
+    <div class="lang-toggle" role="group" aria-label="Language">
+      <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-set-lang="ko" aria-pressed="false">한국어</button>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+  <!-- HERO -->
+  <header class="hero">
+    <div class="wrap">
+      <p class="eyebrow load" style="--d:.1s">
+        <span class="en">Computer Science · Korea University</span>
+        <span class="ko">고려대학교 컴퓨터학과</span>
+      </p>
+      <h1 class="load" style="--d:.25s">
+        <span class="en">Runee Zubaida Zahid.<br>I build AI systems <em>you can trust.</em></span>
+        <span class="ko">Runee Zubaida Zahid.<br>결과를 <em>믿을 수 있는</em><br>AI 시스템을 만듭니다.</span>
+      </h1>
+      <p class="hero-sub load" style="--d:.45s">
+        <span class="en">A final-year CS student who thinks about how things break before building them — from evaluation pipelines for AI outputs to generative models for rare-class data. I also bridge teams across English, Korean, and Bengali.</span>
+        <span class="ko">무언가를 만들기 전에 그것이 어떻게 잘못될 수 있는지부터 생각하는 컴퓨터학과 4학년입니다. AI 출력 검증 파이프라인부터 희귀 클래스 데이터 생성 모델까지 다뤄왔고, 영어·한국어·벵골어로 서로 다른 배경의 팀을 잇는 역할도 해왔습니다.</span>
+      </p>
+      <div class="hero-meta load" style="--d:.6s">
+        <span class="chip"><span class="en">AI Evaluation</span><span class="ko">AI 출력 검증</span></span>
+        <span class="chip"><span class="en">Backend · FastAPI</span><span class="ko">백엔드 · FastAPI</span></span>
+        <span class="chip"><span class="en">Machine Learning</span><span class="ko">머신러닝</span></span>
+        <span class="chip"><span class="en">EN · KO · BN</span><span class="ko">영어 · 한국어 · 벵골어</span></span>
+      </div>
+      <div class="hero-cta load" style="--d:.75s">
+        <a href="#projects" class="btn btn-primary"><span class="en">View projects</span><span class="ko">프로젝트 보기</span> →</a>
+        <a href="mailto:runee.zubaida@gmail.com" class="btn btn-ghost"><span class="en">Get in touch</span><span class="ko">연락하기</span></a>
+      </div>
+    </div>
+    <div class="scroll-hint load" style="--d:1.1s"><span class="en">SCROLL</span><span class="ko">스크롤</span><i></i></div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-num reveal">01</span>
+        <h2 class="reveal" style="--d:.1s"><span class="en">About</span><span class="ko">소개</span></h2>
+      </div>
+      <div class="body-grid">
+        <div></div>
+        <div class="about-text">
+          <p class="reveal">
+            <span class="en">I'm studying <strong>Computer Science at Korea University</strong> alongside <strong>Brain and Cognitive Sciences</strong>, graduating in February 2027 as a <strong>Global Korea Scholarship (GKS)</strong> recipient.</span>
+            <span class="ko"><strong>고려대학교 컴퓨터학과</strong>에서 <strong>뇌인지과학</strong>을 함께 공부하고 있으며, <strong>정부초청 외국인 장학생(GKS)</strong>으로 2027년 2월 졸업 예정입니다.</span>
+          </p>
+          <p class="reveal" style="--d:.1s">
+            <span class="en">Across my projects, one pattern keeps repeating: I end up <strong>building criteria where none exist</strong> — turning a reviewer's gut feeling into a scoring function, or testing whether synthetic data actually helps instead of just looking right.</span>
+            <span class="ko">지금까지의 프로젝트를 돌아보면 한 가지가 반복됩니다. <strong>판단 기준이 없는 곳에서 기준을 만드는 일</strong>입니다. 검토자의 감을 점수 체계로 옮기거나, 합성 데이터가 그럴듯해 보이는 것을 넘어 실제로 도움이 되는지 검증하는 식이었습니다.</span>
+          </p>
+          <p class="reveal" style="--d:.2s">
+            <span class="en">Outside code, I've co-founded an online learning platform in Bangladesh, led the Bangladesh market as SentBe's first intern there, and run cross-cultural programs at SK Innovation.</span>
+            <span class="ko">개발 외에도 방글라데시 온라인 학습 플랫폼을 공동 창업했고, 센트비에서 방글라데시 시장을 맡은 첫 인턴으로 일했으며, SK이노베이션에서 다문화 소통 프로그램을 운영했습니다.</span>
+          </p>
+          <blockquote class="pull reveal scale" style="--d:.1s">
+            <span class="en">"The question I kept asking wasn't 'how do I use AI?' — it was 'how do I trust this output?'"</span>
+            <span class="ko">"AI를 쓰면서 제가 계속 붙들었던 질문은 '어떻게 활용하지'가 아니라 '이 결과를 어떻게 믿지'였습니다."</span>
+          </blockquote>
+          <div class="stats">
+            <div class="stat reveal" style="--d:0s"><b>3+1</b><span class="en">Languages (+ Hindi)</span><span class="ko">구사 언어 (+ 힌디어)</span></div>
+            <div class="stat reveal" style="--d:.1s"><b>4,118</b><span class="en">Synthetic ECGs generated</span><span class="ko">생성한 합성 ECG</span></div>
+            <div class="stat reveal" style="--d:.2s"><b>5 yrs</b><span class="en">Running a startup team</span><span class="ko">스타트업 조직 운영</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-num reveal">02</span>
+        <h2 class="reveal" style="--d:.1s"><span class="en">Selected projects</span><span class="ko">주요 프로젝트</span></h2>
+      </div>
+
+      <div class="projects">
+        <!-- OI Spark -->
+        <article class="card featured reveal scale">
+          <div class="featured-grid">
+            <div>
+              <div class="card-top">
+                <span class="tag"><span class="en">SK mySUNI · SunnyC</span><span class="ko">SK mySUNI · 써니C</span></span>
+                <span class="date">2026.06 – 2026.08</span>
+              </div>
+              <h3>OI Spark</h3>
+              <p class="role"><span class="en">Backend evaluation modules · Team 7</span><span class="ko">백엔드 평가 모듈 설계·구현 · 7팀</span></p>
+              <p>
+                <span class="en">A service that analyzes external cases to surface new innovation tasks. The pipeline produced plenty of candidates, but reviewers had no shared way to judge them — and their verdicts disagreed.</span>
+                <span class="ko">외부 사례를 분석해 신규 혁신 과제 후보를 발굴하는 서비스입니다. 후보는 많이 나왔지만 무엇을 진지하게 볼지 판단할 기준이 없었고, 검토자마다 판단이 달랐습니다.</span>
+              </p>
+              <ul>
+                <li><span class="en">Listed the ways the pipeline could fail <em>before</em> writing features, then built output-schema validation to stop malformed results early</span><span class="ko">기능보다 먼저 파이프라인이 이상한 결과를 낼 수 있는 경우를 목록화하고, 출력 스키마 검증으로 형식 오류를 초기에 차단</span></li>
+                <li><span class="en">Turned reviewers' implicit criteria into a metric-based Scorer for consistent results</span><span class="ko">검토자들이 머릿속에서만 쓰던 기준을 지표화해 일관된 점수를 내는 Scorer 구현</span></li>
+                <li><span class="en">Connected a Priority module so the most important candidates rise to the top automatically</span><span class="ko">우선순위 모듈을 연결해 먼저 봐야 할 과제가 자동으로 상단에 정렬되도록 구성</span></li>
+              </ul>
+              <div class="stack"><span>FastAPI</span><span>React</span><span>Python</span><span>LLM pipeline</span></div>
+              <a class="card-link" href="https://github.com/Qqldir/SuniC_team7" target="_blank" rel="noopener">GitHub →</a>
+            </div>
+            <div class="pipeline" aria-label="Pipeline stages">
+              <div class="stage"><b>1</b><span class="en">Case collection</span><span class="ko">사례 수집</span></div>
+              <div class="stage"><b>2</b><span class="en">Candidate generation</span><span class="ko">과제 후보 생성</span></div>
+              <div class="stage mine"><b>3</b><span class="en">Validator · Scorer</span><span class="ko">Validator · Scorer</span><small><span class="en">MY PART</span><span class="ko">담당</span></small></div>
+              <div class="stage mine"><b>4</b><span class="en">Priority ranking</span><span class="ko">우선순위 정렬</span><small><span class="en">MY PART</span><span class="ko">담당</span></small></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- ECG diffusion -->
+        <article class="card reveal" style="--d:0s">
+          <div class="card-top">
+            <span class="tag clay"><span class="en">Machine Learning · COSE362</span><span class="ko">기계학습 · COSE362</span></span>
+            <span class="date">2026.03 – 2026.06</span>
+          </div>
+          <h3><span class="en">Rare Arrhythmia ECG Generation</span><span class="ko">희귀 부정맥 ECG 생성</span></h3>
+          <p class="role"><span class="en">Evaluation & baseline comparison</span><span class="ko">성능 평가 및 baseline 비교</span></p>
+          <p>
+            <span class="en">In MIT-BIH, normal beats make up 83% of the data — and the most dangerous arrhythmias are the rarest. We trained a class-conditional 1D DDPM to generate 4,118 synthetic ECGs across 6 rare classes.</span>
+            <span class="ko">MIT-BIH 데이터에서 정상 박동은 83%를 차지하고, 위험한 부정맥일수록 사례가 적습니다. 클래스 조건부 1D DDPM으로 6개 희귀 클래스에 대해 4,118개의 합성 ECG를 생성했습니다.</span>
+          </p>
+          <ul>
+            <li><span class="en">Benchmarked against SMOTE, GAN, and unconditional diffusion on minority-class macro F1</span><span class="ko">소수 클래스 macro F1 기준으로 SMOTE·GAN·무조건부 확산과 비교</span></li>
+            <li><span class="en">Result went against the hypothesis — reported it honestly, broke down causes, and proposed confidence-based quality filtering</span><span class="ko">가설과 반대된 결과를 덮지 않고 원인을 나눠 분석, 확신도 기반 품질 필터링 개선안 제안</span></li>
+          </ul>
+          <div class="stack"><span>PyTorch</span><span>DDPM</span><span>scikit-learn</span><span>NumPy</span></div>
+        </article>
+
+        <!-- Excusinator -->
+        <article class="card reveal" style="--d:.12s">
+          <div class="card-top">
+            <span class="tag"><span class="en">Data Science</span><span class="ko">데이터과학</span></span>
+            <span class="date">2024 – 2025</span>
+          </div>
+          <h3>Excusinator</h3>
+          <p class="role"><span class="en">Implementation & evaluation</span><span class="ko">구현 및 성능 평가</span></p>
+          <p>
+            <span class="en">A text classifier built on TF-IDF and logistic regression, with a human-in-the-loop feedback cycle.</span>
+            <span class="ko">TF-IDF와 로지스틱 회귀 기반의 텍스트 분류기로, 사용자 피드백이 반영되는 구조를 갖췄습니다.</span>
+          </p>
+          <ul>
+            <li><span class="en">User corrections are added to the dataset and the model retrains on them</span><span class="ko">사용자가 예측을 수정하면 데이터셋에 쌓여 모델이 재학습</span></li>
+            <li><span class="en">Separate evaluation script for accuracy, precision, recall, F1, and confusion matrix</span><span class="ko">별도 평가 스크립트로 정확도·정밀도·재현율·F1과 혼동 행렬 산출</span></li>
+          </ul>
+          <div class="stack"><span>Python</span><span>scikit-learn</span><span>pandas</span></div>
+          <a class="card-link" href="https://github.com/joonayaka/excusinator" target="_blank" rel="noopener">GitHub →</a>
+        </article>
+
+        <!-- Yessenger -->
+        <article class="card featured reveal" style="--d:.05s">
+          <div class="card-top">
+            <span class="tag"><span class="en">Data Communication</span><span class="ko">데이터통신</span></span>
+            <span class="date">2024 – 2025</span>
+          </div>
+          <h3>Yessenger</h3>
+          <p class="role"><span class="en">Real-time messaging service</span><span class="ko">실시간 메시징 서비스</span></p>
+          <p>
+            <span class="en">Built WebSocket-based communication from scratch. Implementing protocols I'd only seen as concepts in class surfaced real problems in connection-state management and concurrency with many simultaneous users.</span>
+            <span class="ko">WebSocket 기반 통신 구조를 직접 구현했습니다. 수업에서 개념으로만 봤던 프로토콜을 짜보니, 다수 사용자 동시 접속 환경에서 연결 상태 관리와 동시성 처리 문제가 계속 나왔고 이를 하나씩 해결했습니다.</span>
+          </p>
+          <div class="stack"><span>WebSocket</span><span>Concurrency</span><span>Networking</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-num reveal">03</span>
+        <h2 class="reveal" style="--d:.1s"><span class="en">Experience</span><span class="ko">경력</span></h2>
+      </div>
+      <div class="body-grid">
+        <div></div>
+        <div class="timeline" id="timeline">
+          <div class="tl-line" id="tlLine"></div>
+
+          <div class="job reveal left">
+            <div class="job-head">
+              <h3>Global RA</h3>
+              <span class="date">2026.04 – 2026.07</span>
+            </div>
+            <p class="org"><span class="en">SK Innovation · mySUNI (Change Management)</span><span class="ko">SK이노베이션 · mySUNI 변화추진</span></p>
+            <ul>
+              <li><span class="en">Placed with the AI Capability and Management teams; joined bi-weekly meetings and supported team work</span><span class="ko">AI역량육성팀과 경영팀에 배속되어 격주 정기 회의 참석 및 팀 업무 지원</span></li>
+              <li><span class="en">Planned and ran brown-bag seminars and Country Day events (20–30 people) connecting Korean and international employees</span><span class="ko">20~30명 규모의 브라운백 세미나와 Country Day 행사를 기획·운영하며 한국인·외국인 구성원 간 교류 담당</span></li>
+              <li><span class="en">Co-presented SKMS reinterpreted from an international employee's perspective</span><span class="ko">SKMS를 외국인 구성원 관점에서 해석한 내용을 공동 발표</span></li>
+            </ul>
+          </div>
+
+          <div class="job reveal left">
+            <div class="job-head">
+              <h3><span class="en">Global Marketing Intern</span><span class="ko">글로벌 마케팅 인턴</span></h3>
+              <span class="date">2025.12 – 2026.03</span>
+            </div>
+            <p class="org"><span class="en">SentBe · Cross-border remittance fintech</span><span class="ko">센트비 · 해외송금 핀테크</span></p>
+            <ul>
+              <li><span class="en">Joined as the first intern covering the Bangladesh market — no predecessor or playbook</span><span class="ko">방글라데시 시장을 담당한 첫 인턴으로 합류, 선례 없이 직접 조사하고 판단</span></li>
+              <li><span class="en">Led customer acquisition in the Bangladeshi community through online and offline events</span><span class="ko">방글라데시 커뮤니티 대상 신규 고객 유치 및 온·오프라인 이벤트 기획·운영</span></li>
+              <li><span class="en">Handled customer inquiries directly and relayed local user context to the Korean team in Bengali, Korean, and English</span><span class="ko">고객 문의에 직접 대응하며 벵골어·한국어·영어로 현지 사용자 맥락을 한국 팀에 전달</span></li>
+            </ul>
+          </div>
+
+          <div class="job reveal left">
+            <div class="job-head">
+              <h3><span class="en">Co-founder · PR & HR Lead</span><span class="ko">공동 창업자 · PR·인사 총괄</span></h3>
+              <span class="date"><span class="en">5 years</span><span class="ko">5년</span></span>
+            </div>
+            <p class="org"><span class="en">QOC · Online learning platform, Bangladesh</span><span class="ko">QOC · 방글라데시 온라인 학습 플랫폼</span></p>
+            <ul>
+              <li><span class="en">Co-founded the platform and ran PR and people operations for a team of 15–20</span><span class="ko">플랫폼을 공동 창업하고 15~20명 규모 조직의 PR과 인사를 총괄</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS & EDUCATION -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-num reveal">04</span>
+        <h2 class="reveal" style="--d:.1s"><span class="en">Skills & education</span><span class="ko">역량 및 학력</span></h2>
+      </div>
+      <div class="two-col">
+        <div class="panel reveal">
+          <h4><span class="en">Technical</span><span class="ko">기술 스택</span></h4>
+          <div class="skill-group">
+            <p><span class="en">Languages</span><span class="ko">언어</span></p>
+            <div class="pills"><span>Python</span><span>C / C++</span><span>SQL</span><span>HTML</span></div>
+          </div>
+          <div class="skill-group">
+            <p>ML & Data</p>
+            <div class="pills"><span>PyTorch</span><span>scikit-learn</span><span>pandas</span><span>NumPy</span><span>Matplotlib</span><span>Seaborn</span><span>Jupyter</span></div>
+          </div>
+          <div class="skill-group">
+            <p><span class="en">Backend & Tools</span><span class="ko">백엔드 · 도구</span></p>
+            <div class="pills"><span>FastAPI</span><span>React</span><span>WebSocket</span><span>MySQL</span><span>Git / GitHub</span></div>
+          </div>
+          <div class="skill-group">
+            <p><span class="en">Coursework</span><span class="ko">주요 이수 과목</span></p>
+            <div class="pills">
+              <span class="en">Machine Learning</span><span class="ko">기계학습</span>
+              <span class="en">Algorithms</span><span class="ko">알고리즘</span>
+              <span class="en">Databases</span><span class="ko">데이터베이스</span>
+              <span class="en">Operating Systems</span><span class="ko">운영체제</span>
+              <span class="en">Computer Networks</span><span class="ko">컴퓨터네트워크</span>
+              <span class="en">Software Engineering</span><span class="ko">소프트웨어공학</span>
+              <span class="en">Cognitive Psychology</span><span class="ko">인지심리학</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:grid; gap:22px; align-content:start;">
+          <div class="panel reveal" style="--d:.1s">
+            <h4><span class="en">Languages</span><span class="ko">외국어</span></h4>
+            <div class="lang-row"><span class="en">English</span><span class="ko">영어</span><div class="bar"><i style="--w:100%"></i></div><small><span class="en">Native · IELTS 8.0</span><span class="ko">원어민 · IELTS 8.0</span></small></div>
+            <div class="lang-row"><span class="en">Bengali</span><span class="ko">벵골어</span><div class="bar"><i style="--w:100%"></i></div><small><span class="en">Native</span><span class="ko">원어민</span></small></div>
+            <div class="lang-row"><span class="en">Korean</span><span class="ko">한국어</span><div class="bar"><i style="--w:92%"></i></div><small><span class="en">Fluent · TOPIK 6</span><span class="ko">유창 · TOPIK 6급</span></small></div>
+            <div class="lang-row"><span class="en">Hindi</span><span class="ko">힌디어</span><div class="bar"><i style="--w:55%"></i></div><small><span class="en">Intermediate</span><span class="ko">중급</span></small></div>
+          </div>
+
+          <div class="panel reveal" style="--d:.2s">
+            <h4><span class="en">Education & honors</span><span class="ko">학력 및 수상</span></h4>
+            <div class="edu-item">
+              <b><span class="en">Korea University</span><span class="ko">고려대학교</span></b>
+              <span><span class="en">B.S. Computer Science · Brain and Cognitive Sciences</span><span class="ko">컴퓨터학과 · 뇌인지과학</span></span>
+              <small><span class="en">2023.03 – 2027.02 (expected)</span><span class="ko">2023.03 – 2027.02 (졸업 예정)</span></small>
+            </div>
+            <div class="edu-item">
+              <b><span class="en">Global Korea Scholarship (GKS)</span><span class="ko">정부초청 외국인 장학생 (GKS)</span></b>
+              <span><span class="en">NIIED · Korean language program, Dongseo University</span><span class="ko">국립국제교육원 · 동서대학교 한국어 교육 프로그램</span></span>
+              <small>2022.03 –</small>
+            </div>
+            <div class="edu-item">
+              <b><span class="en">Dean's Award, Presentation Competition</span><span class="ko">교양교육원장상</span></b>
+              <span><span class="en">7th KU Liberty·Justice·Truth Presentation Contest</span><span class="ko">제7회 KU 자유정의진리 프레젠테이션 대회</span></span>
+              <small>2024.01</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <p class="eyebrow reveal"><span class="en">Open to new-grad roles · 2027</span><span class="ko">2027 신입 채용 지원 중</span></p>
+      <h2 class="reveal" style="--d:.1s"><span class="en">Let's build something reliable.</span><span class="ko">믿을 수 있는 것을 함께 만들어요.</span></h2>
+      <p class="reveal" style="--d:.2s">
+        <span class="en">I'm looking for roles in software development, data engineering, and AI applications. I'd love to hear from you.</span>
+        <span class="ko">소프트웨어 개발, 데이터 엔지니어링, AI 애플리케이션 직무에 관심이 있습니다. 편하게 연락 주세요.</span>
+      </p>
+      <a href="mailto:runee.zubaida@gmail.com" class="email-big reveal" style="--d:.3s">runee.zubaida@gmail.com</a>
+      <div class="socials reveal" style="--d:.4s">
+        <!-- TODO: replace # with your GitHub and LinkedIn URLs -->
+        <a href="#" class="btn btn-ghost" target="_blank" rel="noopener">GitHub</a>
+        <a href="#" class="btn btn-ghost" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Runee Zubaida Zahid</span>
+    <span><span class="en">Seoul, Korea</span><span class="ko">서울</span></span>
+  </div>
+</footer>
+
+<script>
+  // ---- language toggle ----
+  const root = document.documentElement;
+  const buttons = document.querySelectorAll('[data-set-lang]');
+  function applyLang(lang, animate) {
+    const set = () => {
+      root.dataset.lang = lang;
+      root.lang = lang;
+      buttons.forEach(b => b.setAttribute('aria-pressed', b.dataset.setLang === lang));
+      try { localStorage.setItem('lang', lang); } catch (e) {}
+    };
+    if (!animate) return set();
+    document.body.classList.add('swapping');
+    setTimeout(() => { set(); document.body.classList.remove('swapping'); }, 220);
+  }
+  let saved = null;
+  try { saved = localStorage.getItem('lang'); } catch (e) {}
+  applyLang(saved || ((navigator.language || '').startsWith('ko') ? 'ko' : 'en'), false);
+  buttons.forEach(b => b.addEventListener('click', () => {
+    if (root.dataset.lang !== b.dataset.setLang) applyLang(b.dataset.setLang, true);
+  }));
+
+  // ---- scroll reveal ----
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // ---- nav, progress bar, timeline line, active link ----
+  const nav = document.getElementById('nav');
+  const progress = document.getElementById('progress');
+  const timeline = document.getElementById('timeline');
+  const tlLine = document.getElementById('tlLine');
+  const links = [...document.querySelectorAll('.nav-links a')];
+  const sections = links.map(a => document.querySelector(a.getAttribute('href')));
+
+  function onScroll() {
+    const y = window.scrollY;
+    const max = document.documentElement.scrollHeight - innerHeight;
+    progress.style.width = (max > 0 ? (y / max) * 100 : 0) + '%';
+    nav.classList.toggle('scrolled', y > 30);
+
+    const r = timeline.getBoundingClientRect();
+    const pct = Math.min(1, Math.max(0, (innerHeight * 0.7 - r.top) / r.height));
+    tlLine.style.height = (pct * (r.height - 16)) + 'px';
+
+    let current = -1;
+    sections.forEach((s, i) => { if (s && s.getBoundingClientRect().top < innerHeight * 0.4) current = i; });
+    links.forEach((a, i) => a.classList.toggle('active', i === current));
+  }
+  addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+</script>
+</body>
+</html>
