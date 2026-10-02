@@ -168,6 +168,8 @@
   .card-link { margin-top: 18px; font-size: 14px; font-weight: 500; color: var(--sage); display: inline-flex; gap: 6px; align-items: center; }
   .card-link:hover { gap: 10px; } .card-link { transition: gap .25s; }
 
+  .why { margin-top: 12px; max-width: 680px; font-size: 14px; color: var(--ink); padding: 10px 14px; background: var(--surface); border-left: 2px solid var(--sage); border-radius: 0 8px 8px 0; }
+  .why b { color: var(--sage); font-weight: 600; margin-right: 6px; }
   /* experience timeline */
   .timeline { position: relative; }
   .timeline::before { content: ""; position: absolute; left: 0; top: 8px; bottom: 8px; width: 1px; background: var(--line); }
@@ -216,7 +218,7 @@
     transition: border-color .3s, color .3s;
   }
   .email-big:hover { border-color: var(--clay); color: var(--clay); }
-  .socials { margin-top: 36px; display: flex; justify-content: center; gap: 12px; }
+  .socials { margin-top: 36px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
   footer { border-top: 1px solid var(--line); padding: 28px 0; font-size: 13px; color: var(--muted); }
   footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
 
@@ -263,8 +265,8 @@
     <a href="#top" class="logo">Runee<span>.</span></a>
     <div class="nav-links">
       <a href="#about"><span class="en">About</span><span class="ko">소개</span></a>
-      <a href="#projects"><span class="en">Projects</span><span class="ko">프로젝트</span></a>
       <a href="#experience"><span class="en">Experience</span><span class="ko">경력</span></a>
+      <a href="#projects"><span class="en">Projects</span><span class="ko">프로젝트</span></a>
       <a href="#skills"><span class="en">Skills</span><span class="ko">역량</span></a>
       <a href="#contact"><span class="en">Contact</span><span class="ko">연락처</span></a>
     </div>
@@ -300,6 +302,8 @@
       <div class="hero-cta load" style="--d:.75s">
         <a href="#projects" class="btn btn-primary"><span class="en">View projects</span><span class="ko">프로젝트 보기</span> →</a>
         <a href="mailto:runee.zubaida@gmail.com" class="btn btn-ghost"><span class="en">Get in touch</span><span class="ko">연락하기</span></a>
+        <a href="resume_en.pdf" class="btn btn-ghost en" download>Résumé (PDF) ↓</a><a href="resume.pdf" class="btn btn-ghost ko" download>이력서 (PDF) ↓</a>
+        <a href="career_en.pdf" class="btn btn-ghost en" download>Career details (PDF) ↓</a><a href="career.pdf" class="btn btn-ghost ko" download>경력기술서 (PDF) ↓</a>
       </div>
     </div>
     <div class="scroll-hint load" style="--d:1.1s"><span class="en">SCROLL</span><span class="ko">스크롤</span><i></i></div>
@@ -341,11 +345,68 @@
     </div>
   </section>
 
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="section-num reveal">02</span>
+        <h2 class="reveal" style="--d:.1s"><span class="en">Experience</span><span class="ko">경력</span></h2>
+      </div>
+      <div class="body-grid">
+        <div></div>
+        <div class="timeline" id="timeline">
+          <div class="tl-line" id="tlLine"></div>
+
+          <div class="job reveal left">
+            <div class="job-head">
+              <h3>Global RA</h3>
+              <span class="date">2026.04 – 2026.07</span>
+            </div>
+            <p class="org"><span class="en">SK Innovation · mySUNI (Change Management)</span><span class="ko">SK이노베이션 · mySUNI 변화추진</span></p>
+            <ul>
+              <li><span class="en">Rotated through the AI Capability Development and Management Capability teams; joined bi-weekly meetings and supported team work</span><span class="ko">AI역량육성팀·경영관리역량팀에 순환 배속되어 격주 정기 회의 참석 및 팀 업무 지원</span></li>
+              <li><span class="en">Planned and ran brown-bag seminars, Country Day (20–30 people), and small-group tea times connecting Korean and international employees</span><span class="ko">20~30명 규모의 브라운백 세미나·Country Day와 소규모 티타임을 기획·운영하며 한국인·외국인 구성원 간 교류 담당</span></li>
+              <li><span class="en">Co-presented SKMS reinterpreted from an international employee's perspective, framing localization as a strategic opportunity</span><span class="ko">SKMS를 외국인 구성원 관점에서 해석하고, 현지화를 전략적 기회로 제안하는 내용을 공동 발표</span></li>
+            </ul>
+            <p class="why"><b><span class="en">What I took from it</span><span class="ko">배운 점</span></b><span class="en">Understanding another culture isn't about conforming to one side — it's re-delivering the same values in the other side's language and context.</span><span class="ko">다른 문화를 이해한다는 것은 한쪽에 맞추는 것이 아니라, 같은 가치를 상대의 언어와 맥락으로 다시 전달하는 일이라는 것을 배웠습니다.</span></p>
+          </div>
+
+          <div class="job reveal left">
+            <div class="job-head">
+              <h3><span class="en">Global Marketing Intern</span><span class="ko">글로벌 마케팅 인턴</span></h3>
+              <span class="date">2025.12 – 2026.03</span>
+            </div>
+            <p class="org"><span class="en">SentBe · Cross-border remittance fintech</span><span class="ko">센트비 · 해외송금 핀테크</span></p>
+            <ul>
+              <li><span class="en">Joined as the first intern covering the Bangladesh market — no predecessor or playbook</span><span class="ko">방글라데시 시장을 담당한 첫 인턴으로 합류, 선례 없이 직접 조사하고 판단</span></li>
+              <li><span class="en">Led customer acquisition in the Bangladeshi community through online and offline events</span><span class="ko">방글라데시 커뮤니티 대상 신규 고객 유치 및 온·오프라인 이벤트 기획·운영</span></li>
+              <li><span class="en">Handled customer inquiries directly and relayed local user context to the Korean team in Bengali, Korean, and English</span><span class="ko">고객 문의에 직접 대응하며 벵골어·한국어·영어로 현지 사용자 맥락을 한국 팀에 전달</span></li>
+            </ul>
+            <p class="why"><b><span class="en">What I took from it</span><span class="ko">배운 점</span></b><span class="en">Even a good service only gets chosen when it reaches people through the channels they trust, in their own language and context.</span><span class="ko">좋은 서비스도 고객이 신뢰하는 채널에서, 고객의 언어와 맥락으로 전달되어야 선택받는다는 것을 배웠습니다.</span></p>
+          </div>
+
+          <div class="job reveal left">
+            <div class="job-head">
+              <h3><span class="en">Co-founder · Head of Public Relations</span><span class="ko">공동 창업자 · Public Relations 부서장</span></h3>
+              <span class="date">2019.08 – 2024.12</span>
+            </div>
+            <p class="org"><span class="en">QOC · Online learning platform, Bangladesh</span><span class="ko">QOC · 방글라데시 온라인 학습 플랫폼</span></p>
+            <ul>
+              <li><span class="en">Co-founded the platform and led PR and operations management for a team of 15–20</span><span class="ko">플랫폼을 공동 창업하고 15~20명 규모 조직의 PR과 운영 관리를 총괄</span></li>
+              <li><span class="en">Taught Korean, English, and programming classes and planned the course content</span><span class="ko">한국어·영어·프로그래밍 강의를 직접 맡아 교육 콘텐츠를 기획·운영</span></li>
+            </ul>
+            <p class="why"><b><span class="en">What I took from it</span><span class="ko">배운 점</span></b><span class="en">In a small organization, no one hands you a task list — I learned to find the work, own it, and see it through to results.</span><span class="ko">작은 조직에서는 누구도 할 일을 정해 주지 않습니다. 스스로 일을 찾고, 끝까지 맡아 결과로 만드는 법을 배웠습니다.</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- PROJECTS -->
   <section id="projects">
     <div class="wrap">
       <div class="section-head">
-        <span class="section-num reveal">02</span>
+        <span class="section-num reveal">03</span>
         <h2 class="reveal" style="--d:.1s"><span class="en">Selected projects</span><span class="ko">주요 프로젝트</span></h2>
       </div>
 
@@ -454,60 +515,6 @@
     </div>
   </section>
 
-  <!-- EXPERIENCE -->
-  <section id="experience">
-    <div class="wrap">
-      <div class="section-head">
-        <span class="section-num reveal">03</span>
-        <h2 class="reveal" style="--d:.1s"><span class="en">Experience</span><span class="ko">경력</span></h2>
-      </div>
-      <div class="body-grid">
-        <div></div>
-        <div class="timeline" id="timeline">
-          <div class="tl-line" id="tlLine"></div>
-
-          <div class="job reveal left">
-            <div class="job-head">
-              <h3>Global RA</h3>
-              <span class="date">2026.04 – 2026.07</span>
-            </div>
-            <p class="org"><span class="en">SK Innovation · mySUNI (Change Management)</span><span class="ko">SK이노베이션 · mySUNI 변화추진</span></p>
-            <ul>
-              <li><span class="en">Rotated through the AI Capability Development and Management Capability teams; joined bi-weekly meetings and supported team work</span><span class="ko">AI역량육성팀·경영관리역량팀에 순환 배속되어 격주 정기 회의 참석 및 팀 업무 지원</span></li>
-              <li><span class="en">Planned and ran brown-bag seminars, Country Day (20–30 people), and small-group tea times connecting Korean and international employees</span><span class="ko">20~30명 규모의 브라운백 세미나·Country Day와 소규모 티타임을 기획·운영하며 한국인·외국인 구성원 간 교류 담당</span></li>
-              <li><span class="en">Co-presented SKMS reinterpreted from an international employee's perspective, framing localization as a strategic opportunity</span><span class="ko">SKMS를 외국인 구성원 관점에서 해석하고, 현지화를 전략적 기회로 제안하는 내용을 공동 발표</span></li>
-            </ul>
-          </div>
-
-          <div class="job reveal left">
-            <div class="job-head">
-              <h3><span class="en">Global Marketing Intern</span><span class="ko">글로벌 마케팅 인턴</span></h3>
-              <span class="date">2025.12 – 2026.03</span>
-            </div>
-            <p class="org"><span class="en">SentBe · Cross-border remittance fintech</span><span class="ko">센트비 · 해외송금 핀테크</span></p>
-            <ul>
-              <li><span class="en">Joined as the first intern covering the Bangladesh market — no predecessor or playbook</span><span class="ko">방글라데시 시장을 담당한 첫 인턴으로 합류, 선례 없이 직접 조사하고 판단</span></li>
-              <li><span class="en">Led customer acquisition in the Bangladeshi community through online and offline events</span><span class="ko">방글라데시 커뮤니티 대상 신규 고객 유치 및 온·오프라인 이벤트 기획·운영</span></li>
-              <li><span class="en">Handled customer inquiries directly and relayed local user context to the Korean team in Bengali, Korean, and English</span><span class="ko">고객 문의에 직접 대응하며 벵골어·한국어·영어로 현지 사용자 맥락을 한국 팀에 전달</span></li>
-            </ul>
-          </div>
-
-          <div class="job reveal left">
-            <div class="job-head">
-              <h3><span class="en">Co-founder · Head of Public Relations</span><span class="ko">공동 창업자 · Public Relations 부서장</span></h3>
-              <span class="date">2019.08 – 2024.12</span>
-            </div>
-            <p class="org"><span class="en">QOC · Online learning platform, Bangladesh</span><span class="ko">QOC · 방글라데시 온라인 학습 플랫폼</span></p>
-            <ul>
-              <li><span class="en">Co-founded the platform and led PR and operations management for a team of 15–20</span><span class="ko">플랫폼을 공동 창업하고 15~20명 규모 조직의 PR과 운영 관리를 총괄</span></li>
-              <li><span class="en">Taught Korean, English, and programming classes and planned the course content</span><span class="ko">한국어·영어·프로그래밍 강의를 직접 맡아 교육 콘텐츠를 기획·운영</span></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- SKILLS & EDUCATION -->
   <section id="skills">
     <div class="wrap">
@@ -589,6 +596,8 @@
       <div class="socials reveal" style="--d:.4s">
         <a href="https://github.com/runeezubaida" class="btn btn-ghost" target="_blank" rel="noopener">GitHub</a>
         <a href="https://www.linkedin.com/in/runeezubaida/" class="btn btn-ghost" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="resume_en.pdf" class="btn btn-ghost en" download>Résumé ↓</a><a href="resume.pdf" class="btn btn-ghost ko" download>이력서 ↓</a>
+        <a href="career_en.pdf" class="btn btn-ghost en" download>Career details ↓</a><a href="career.pdf" class="btn btn-ghost ko" download>경력기술서 ↓</a>
       </div>
     </div>
   </section>
